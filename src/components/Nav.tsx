@@ -33,7 +33,17 @@ const Nav = () => {
 
   const lenCar = JSON.parse(localStorage.getItem('carrinho') ?? '');
 
-  const total = add.reduce((acc, add: TIdCervejs) => Number(acc) + add.abv, 0);
+  const total = add.reduce((acc, add) => {
+    if (add && add.abv !== null && add.abv !== undefined) {
+      return acc + Number(add.abv);
+    } else {
+      return acc;
+    }
+  }, 0);
+  
+
+  console.log(add);
+  
 
   const pagar = `${total.toFixed(2)}`
 
