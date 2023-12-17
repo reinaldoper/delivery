@@ -34,12 +34,9 @@ const Nav = () => {
   const lenCar = JSON.parse(localStorage.getItem('carrinho') ?? '');
 
   const total = add.reduce((acc, add) => {
-    if (add && add.abv !== null && add.abv !== undefined) {
-      return acc + Number(add.abv);
-    } else {
-      return acc;
-    }
+    return acc + (add && add.abv ? Number(add.abv) : 0);
   }, 0);
+  
   
 
   console.log(add);
