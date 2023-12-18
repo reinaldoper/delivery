@@ -3,13 +3,16 @@ import './detail.css'
 import { Center, Box, Image, CircularProgress, Text, Flex, Container } from "@chakra-ui/react";
 
 const DetailCard = ({ detail }: { detail: TIdCervejs[] }) => {
-  const ingredients = detail.length > 0 && detail[0].ingredients.hops.map((item, index) => (
+  const ingredients = detail.length > 0 && detail[0].ingredients.hops
+  .slice(0, 3)
+  .map((item, index) => (
     <Box key={index}>
       <Text>{item.name}</Text>
       <Text>{item.attribute}</Text>
       <Text marginBottom={10}>{item.amount.value}</Text>
     </Box>
-  ))
+  ));
+
 
   if(detail.length > 0) localStorage.setItem('car', JSON.stringify(detail[0]));
 
