@@ -4,22 +4,22 @@ import { Center, Box, Image, CircularProgress, Text, Flex, Container } from "@ch
 
 const DetailCard = ({ detail }: { detail: TIdCervejs[] }) => {
   const ingredients = detail.length > 0 && detail[0].ingredients.hops
-  .slice(0, 3)
-  .map((item, index) => (
-    <Box key={index}>
-      <Text>{item.name}</Text>
-      <Text>{item.attribute}</Text>
-      <Text marginBottom={10}>{item.amount.value}</Text>
-    </Box>
-  ));
+    .slice(0, 3)
+    .map((item, index) => (
+      <Box key={index}>
+        <Text>{item.name}</Text>
+        <Text>{item.attribute}</Text>
+        <Text marginBottom={10}>{item.amount.value}</Text>
+      </Box>
+    ));
 
 
-  if(detail.length > 0) localStorage.setItem('car', JSON.stringify(detail[0]));
+  if (detail.length > 0) localStorage.setItem('car', JSON.stringify(detail[0]));
 
   const result = (
     <Flex>
       <Box marginTop={10} marginLeft={10}>
-        {detail.length > 0 && <Image width={'60vw'} src={detail[0].image_url} alt={detail[0].name} />}
+        {detail.length > 0 && <Image maxWidth={200} maxHeight={200} width={'auto'} height={'auto'} src={detail[0].image_url} alt={detail[0].name} />}
       </Box>
       <Box marginTop={10} marginLeft={5}>
         <Center>
@@ -27,6 +27,18 @@ const DetailCard = ({ detail }: { detail: TIdCervejs[] }) => {
         </Center>
         <Center>
           <p className="description">{detail.length > 0 && detail[0].description}</p>
+        </Center>
+        <Center>
+          <h1>Details</h1>
+        </Center>
+        <Center>
+          <p className="description">{detail.length > 0 && detail[0].brewers_tips.toString()}</p>
+        </Center>
+        <Center>
+          <h1>Fabrication date</h1>
+        </Center>
+        <Center>
+          <p className="description">{detail.length > 0 && detail[0].first_brewed}</p>
         </Center>
       </Box>
       <Box marginTop={10} marginLeft={5} color={"whitesmoke"}>
