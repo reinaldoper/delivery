@@ -1,6 +1,6 @@
 import { TCervejas } from '../services/Types'
 import { useNavigate } from 'react-router'
-import { CircularProgress, Center, Wrap, WrapItem, Button, Image } from '@chakra-ui/react'
+import { CircularProgress, Center, Wrap, WrapItem, Button, Image, Box } from '@chakra-ui/react'
 import './card.css'
 
 const Card = ({ cervejas }: { cervejas: TCervejas[] }) => {
@@ -12,13 +12,18 @@ const Card = ({ cervejas }: { cervejas: TCervejas[] }) => {
 
   const cards = cervejas.map(card => (
     <WrapItem key={card.id} marginLeft={1} bg={'lightcoral'} padding={3} borderRadius={8} marginTop={4}>
-      <Center w='180px' h='400px'>
+      <Center w='18vw' h='15vh'>
         <Button border='none'
           borderRadius={5}
           cursor='pointer'
           onClick={() => itemIdClick(card.id)}
         >
-          <Image src={card.image_url} alt={card.name} />
+          <Image maxWidth={100} maxHeight={100} width={'auto'} height={'auto'} src={card.image_url} alt={card.name} />
+          <Box marginLeft={5}>
+            <p>
+              { card.first_brewed }
+            </p>
+          </Box>
         </Button>
       </Center>
     </WrapItem>
