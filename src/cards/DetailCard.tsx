@@ -1,5 +1,5 @@
 import { TIdCervejs } from "../services/Types"
-import './detail.css'
+import './detail.scss'
 import { Center, Box, Image, CircularProgress, Text, Flex, Container } from "@chakra-ui/react";
 
 const DetailCard = ({ detail }: { detail: TIdCervejs[] }) => {
