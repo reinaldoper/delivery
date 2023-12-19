@@ -51,8 +51,8 @@ const Nav = () => {
 
 
   return (
-    <Flex bg={'lightblue'} justifyContent={'space-evenly'} padding={5}>
-      <Breadcrumb spacing='8px' separator='-' color={'Highlight'} height='2rem' padding={3}>
+    <Flex bg={'lightgrey'} justifyContent={'space-evenly'} padding={5}>
+      <Breadcrumb spacing='8px' separator='-' color={'black'} height='2rem' padding={3}>
         <BreadcrumbItem isCurrentPage={verify}>
           <Link to='/' >Login</Link>
         </BreadcrumbItem>
