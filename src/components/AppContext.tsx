@@ -10,8 +10,19 @@ export const AppContext = createContext({} as IAppContext);
 
 export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [add, setAdd] = useState<TIdCervejs[]>(() => {
-    const storedData = localStorage.getItem('carrinho');
-    return storedData ? JSON.parse(storedData) : [];
+    try {
+      const storedData: string | null = localStorage.getItem('carrinho');
+      console.log('Valor armazenado em carrinho:', storedData);
+  
+      if (storedData && typeof storedData === 'string') {
+        return JSON.parse(storedData);
+      } else {
+        return [];
+      }
+    } catch (error) {
+      console.error('Erro ao fazer parse dos dados do localStorage:', error);
+      return [];
+    }
   });
 
   return (
