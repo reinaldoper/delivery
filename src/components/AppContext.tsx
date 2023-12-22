@@ -12,6 +12,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children
   const [add, setAdd] = useState<TIdCervejs[]>(() => {
     try {
       const storedData: string | null = localStorage.getItem('carrinho');
+      console.log(storedData);
+      
   
       if (storedData && typeof storedData === 'string') {
         return JSON.parse(storedData);
