@@ -3,8 +3,7 @@ import { useNavigate } from "react-router"
 import { useState } from "react"
 import './login.css'
 import { TLogar } from "../services/Types"
-import { requiretUpload } from '../reducers/reducer';
-import { useDispatch } from 'react-redux';
+import { useStore } from "../store/state"
 
 const Login = () => {
   const [logar, setLogar] = useState<TLogar>({
@@ -12,10 +11,11 @@ const Login = () => {
     password: '',
   })
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-
+  
+  const loginTrue = useStore((state) => state.insertLogar)
+    
   const handleClick = () => {
-    dispatch(requiretUpload(true));
+    loginTrue()
     if (logar.email === 'admin@admin.com' && logar.password === 'admin') {
       navigate('/itens')
     } else {

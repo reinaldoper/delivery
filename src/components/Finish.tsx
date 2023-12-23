@@ -25,7 +25,7 @@ const Finish = () => {
     <Center maxW={'40%'} margin={'auto'} marginTop={10} bg={'Highlight'} padding={8} borderRadius={7}>
       <FormControl isRequired>
         <FormLabel>Value</FormLabel>
-        <Input placeholder='Value' value={values} />
+        <Input placeholder='Value' defaultValue={values} />
         <FormLabel>First name</FormLabel>
         <Input value={name} placeholder='First name' onChange={(e) => setName(e.target.value)} />
         <FormLabel>Last name</FormLabel>
