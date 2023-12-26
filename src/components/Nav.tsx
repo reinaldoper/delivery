@@ -2,14 +2,17 @@ import { Box, Breadcrumb, BreadcrumbItem, Button, Text, Flex, Center } from '@ch
 import { Link, useLocation/* , useParams */ } from 'react-router-dom'
 import Icons from './Icons';
 import IconBs from './IconBs';
-import { useContext } from 'react';
+/* import { useContext } from 'react'; */
 import { TIdCervejs } from '../services/Types';
-import { AppContext } from './AppContext';
+/* import { AppContext } from './AppContext'; */
 import IconsCg from './IconsCg';
+import { useStore } from '../store/state';
 
 const Nav = () => {
+  const logAdd = useStore((state) => state.setAdd)
+  const add = useStore((state) => state.add)
 
-  const { add, setAdd } = useContext(AppContext)
+  /* const { add, setAdd } = useContext(AppContext) */
 
   const car = localStorage.getItem('car');
 
@@ -27,7 +30,8 @@ const Nav = () => {
 
 
   const click = () => {
-    setAdd([...add, car1])
+    /* setAdd([...add, car1]) */
+    logAdd([...add, car1])
   }
   localStorage.setItem('carrinho', JSON.stringify(add));
 
@@ -66,7 +70,7 @@ const Nav = () => {
         </BreadcrumbItem>
 
         <BreadcrumbItem isCurrentPage={beer}>
-          <Button height='1.2rem' onClick={() => setAdd([])} cursor={'pointer'} width={50} colorScheme='teal' variant='solid' bg='rgb(31, 241, 52)' border={'none'}>
+          <Button height='1.2rem' onClick={() => logAdd([])} cursor={'pointer'} width={50} colorScheme='teal' variant='solid' bg='rgb(31, 241, 52)' border={'none'}>
             Clean
           </Button>
         </BreadcrumbItem>

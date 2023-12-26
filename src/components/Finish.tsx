@@ -1,7 +1,8 @@
 import { Button, Center, FormControl, FormLabel, Input, Select } from "@chakra-ui/react"
-import { useContext, useState } from "react"
+import {/*  useContext,  */useState } from "react"
 import { useNavigate } from "react-router"
-import { AppContext } from "./AppContext"
+/* import { AppContext } from "./AppContext" */
+import { useStore } from "../store/state"
 
 const Finish = () => {
   const [name, setName] = useState<string>('')
@@ -9,13 +10,13 @@ const Finish = () => {
   const [select, setSelect] = useState<string>('')
   const navigate = useNavigate()
 
-  const { setAdd } = useContext(AppContext)
+  const logAdd = useStore((state) => state.setAdd)
 
   const values = JSON.parse(localStorage.getItem('total') ?? '')
 
   const handleClick = () => {
     if (values && name.length > 0 && lastName.length > 0 && select.length > 0) {
-      setAdd([])
+      logAdd([])
       navigate('/itens')
     } else {
       alert('Please select a values object')
