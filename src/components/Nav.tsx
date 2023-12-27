@@ -2,9 +2,7 @@ import { Box, Breadcrumb, BreadcrumbItem, Button, Text, Flex, Center } from '@ch
 import { Link, useLocation/* , useParams */ } from 'react-router-dom'
 import Icons from './Icons';
 import IconBs from './IconBs';
-/* import { useContext } from 'react'; */
 import { TIdCervejs } from '../services/Types';
-/* import { AppContext } from './AppContext'; */
 import IconsCg from './IconsCg';
 import { useStore } from '../store/state';
 
@@ -12,7 +10,6 @@ const Nav = () => {
   const logAdd = useStore((state) => state.setAdd)
   const add = useStore((state) => state.add)
 
-  /* const { add, setAdd } = useContext(AppContext) */
 
   const car = localStorage.getItem('car');
 
@@ -30,23 +27,18 @@ const Nav = () => {
 
 
   const click = () => {
-    /* setAdd([...add, car1]) */
     logAdd([...add, car1])
   }
-  localStorage.setItem('carrinho', JSON.stringify(add));
-
-  const lenCar = JSON.parse(localStorage.getItem('carrinho') ?? '');
-
-  const total = add.reduce((acc, add) => {
-    return acc + (add && add.abv ? Number(add.abv) : 0);
-  }, 0);
+  
+  
+  let soma: number = 0
+  add.forEach((item) =>{
+    soma += item.abv ? Number(item.abv) : 0;
+  })
   
   
 
-  console.log(add);
-  
-
-  const pagar = `${total.toFixed(2)}`
+  const pagar = `${soma.toFixed(2)}`
 
   localStorage.setItem('total', JSON.stringify(pagar));
 
@@ -84,7 +76,7 @@ const Nav = () => {
         <Box height='1rem' padding={3}>
           <Text width={50} colorScheme='teal' variant='solid' bg='rgb(31, 241, 52)' border={'none'}>
             <IconBs />
-            {lenCar.length}
+            {add.length}
           </Text>
         </Box>
         <Center height='1rem' padding={6}>
