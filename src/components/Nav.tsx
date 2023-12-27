@@ -57,9 +57,9 @@ const Nav = () => {
           <Link to='/itens'>Home</Link>
         </BreadcrumbItem>
 
-        <BreadcrumbItem isCurrentPage={beer}>
+        {add.length > 0 && <BreadcrumbItem isCurrentPage={beer}>
           <Link to='/finished'>Finish</Link>
-        </BreadcrumbItem>
+        </BreadcrumbItem>}
 
         <BreadcrumbItem isCurrentPage={beer}>
           <Button height='1.2rem' onClick={() => logAdd([])} cursor={'pointer'} width={50} colorScheme='teal' variant='solid' bg='rgb(31, 241, 52)' border={'none'}>
