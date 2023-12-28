@@ -40,6 +40,12 @@ const DetailCard = ({ detail }: { detail: TIdCervejs[] }) => {
         <Center>
           <p className="description">{detail.length > 0 && detail[0].first_brewed}</p>
         </Center>
+        <Center>
+          <h1>Price</h1>
+        </Center>
+        <Center>
+          <p className="description">{detail.length > 0 && detail[0].abv}$R</p>
+        </Center>
       </Box>
       <Box marginTop={10} marginLeft={5} color={"whitesmoke"}>
         <h1 className="h1-ingredients">Ingredients</h1>
