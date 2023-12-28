@@ -2,16 +2,16 @@ import { Box, Breadcrumb, BreadcrumbItem, Button, Text, Flex, Center } from '@ch
 import { Link, useLocation/* , useParams */ } from 'react-router-dom'
 import Icons from './Icons';
 import IconBs from './IconBs';
-import { TIdCervejs } from '../services/Types';
+/* import { TIdCervejs } from '../services/Types'; */
 import IconsCg from './IconsCg';
 import { useStore } from '../store/state';
 
 const Nav = () => {
   const logAdd = useStore((state) => state.setAdd)
   const add = useStore((state) => state.add)
+  const abv = useStore((state) => state.abv)
 
-
-  const car = localStorage.getItem('car');
+  /* const car = localStorage.getItem('car'); */
 
   let verify = false;
   let beer = false;
@@ -21,14 +21,15 @@ const Nav = () => {
   if (local.pathname === '/itens') verify = true;
   if (local.pathname === '/finished') beer = true;
 
-  let car1: TIdCervejs
+  /* let car1: TIdCervejs
 
-  if (car) car1 = JSON.parse(localStorage.getItem('car') ?? '')
+  if (car) car1 = JSON.parse(localStorage.getItem('car') ?? '') */
 
 
   const click = () => {
-    logAdd([...add, car1])
+    logAdd([...add, abv])
   }
+  console.log(add);
   
   
   let soma: number = 0

@@ -1,4 +1,5 @@
 import { TIdCervejs } from "../services/Types"
+import { useStore } from "../store/state";
 import './detail.scss'
 import { Center, Box, Image, CircularProgress, Text, Flex, Container } from "@chakra-ui/react";
 
@@ -13,8 +14,9 @@ const DetailCard = ({ detail }: { detail: TIdCervejs[] }) => {
       </Box>
     ));
 
-
-  if (detail.length > 0) localStorage.setItem('car', JSON.stringify(detail[0]));
+  const abv = useStore((state) => state.setAbv)
+  abv(detail[0])
+  /* if (detail.length > 0) localStorage.setItem('car', JSON.stringify(detail[0])); */
 
   const result = (
     <Flex>
